@@ -4,6 +4,12 @@ RUN \
   dnf update -y && \
   dnf upgrade -y && \
   dnf install -y wget  && \
+  ln -s /usr/lib64/libicui18n.so.56 /usr/lib64/libicui18n.so.54
+  ln -s /usr/lib64/libicuuc.so.56 /usr/lib64/libicuuc.so.54
+  ldconfig
+  
+  
+RUN \
   cd /etc/yum.repos.d/ && \
   wget http://download.opensuse.org/repositories/home:jeroenooms:opencpu-1.6/Fedora_23/home:jeroenooms:opencpu-1.6.repo && \
   dnf install -y opencpu
