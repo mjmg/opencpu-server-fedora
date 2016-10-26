@@ -6,9 +6,9 @@ RUN \
   dnf install -y wget
 
 RUN \ 
-  dnf install 'dnf-command(builddep)' && \
-  dnf builddep http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/rapache-1.2.7-2.1.src.rpm && \
-  dnf builddep http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/opencpu-1.6.2-7.1.src.rpm
+  dnf install -y 'dnf-command(builddep)' && \
+  dnf builddep -y http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/rapache-1.2.7-2.1.src.rpm && \
+  dnf builddep -y http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/opencpu-1.6.2-7.1.src.rpm
 
 
 RUN \
