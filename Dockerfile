@@ -6,7 +6,7 @@ RUN \
   dnf install -y wget
 
 RUN \ 
-  dnf install -y 'dnf-command(builddep)' rpmdevtools && \
+  dnf install -y 'dnf-command(builddep)' rpmdevtools make R-devel httpd-devel libapreq2-devel libcurl-devel protobuf-devel openssl-devel && \
   wget http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/rapache-1.2.7-2.1.src.rpm && \ 
   wget http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/opencpu-1.6.2-7.1.src.rpm && \ 
   dnf builddep -y --nogpgcheck rapache-1.2.7-2.1.src.rpm && \
