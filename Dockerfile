@@ -14,8 +14,8 @@ RUN \
 
 RUN \
   useradd -ms /bin/bash builder && \
-  chown o+r rapache-1.2.7-2.1.src.rpm && \
-  chown o+r opencpu-1.6.2-7.1.src.rpm && \
+  chmod o+r rapache-1.2.7-2.1.src.rpm && \
+  chmod o+r opencpu-1.6.2-7.1.src.rpm && \
   mv rapache-1.2.7-2.1.src.rpm /home/builder/ && \
   mv opencpu-1.6.2-7.1.src.rpm /home/builder/ 
 
