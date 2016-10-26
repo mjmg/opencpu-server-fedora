@@ -4,8 +4,8 @@ RUN \
   dnf update -y && \
   dnf upgrade -y && \
   dnf install -y wget  && \
-  ln -s /usr/lib64/libicui18n.so.56 /usr/lib64/libicui18n.so.54
-  ln -s /usr/lib64/libicuuc.so.56 /usr/lib64/libicuuc.so.54
+  ln -s /usr/lib64/libicui18n.so.56 /usr/lib64/libicui18n.so.54 && \
+  ln -s /usr/lib64/libicuuc.so.56 /usr/lib64/libicuuc.so.54 && \
   ldconfig
   
   
