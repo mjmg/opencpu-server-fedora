@@ -14,8 +14,7 @@ RUN \
 
 
 RUN \
-  useradd -ms /bin/bash builder && \
-#  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel
+  useradd -ms /bin/bash builder
 
 USER builder
 
