@@ -9,12 +9,15 @@ RUN \
   dnf install -y 'dnf-command(builddep)' rpmdevtools && \
   wget http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/rapache-1.2.7-2.1.src.rpm && \ 
   wget http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/opencpu-1.6.2-7.1.src.rpm && \ 
-  dnf builddep -y rapache-1.2.7-2.1.src.rpm && \
-  dnf builddep -y opencpu-1.6.2-7.1.src.rpm
-
+  dnf builddep -y --nogpgcheck rapache-1.2.7-2.1.src.rpm && \
+  dnf builddep -y --nogpgcheck opencpu-1.6.2-7.1.src.rpm 
 
 RUN \
-  useradd -ms /bin/bash builder
+  useradd -ms /bin/bash builder && \
+  chown o+r rapache-1.2.7-2.1.src.rpm && \
+  chown o+r opencpu-1.6.2-7.1.src.rpm && \
+  mv rapache-1.2.7-2.1.src.rpm /home/builder/ && \
+  mv opencpu-1.6.2-7.1.src.rpm /home/builder/ 
 
 USER builder
 
@@ -23,13 +26,11 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/rapache-1.2.7-2.1.src.rpm && \
   rpm -ivh rapache-1.2.7-2.1.src.rpm && \
   rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 
 RUN \
   cd ~ && \
-  wget http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/opencpu-1.6.2-7.1.src.rpm && \
   rpm -ivh opencpu-1.6.2-7.1.src.rpm && \
   rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
 
