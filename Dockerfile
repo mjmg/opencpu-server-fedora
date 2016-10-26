@@ -7,13 +7,15 @@ RUN \
 
 RUN \ 
   dnf install -y 'dnf-command(builddep)' && \
-  dnf builddep -y http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/rapache-1.2.7-2.1.src.rpm && \
-  dnf builddep -y http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/opencpu-1.6.2-7.1.src.rpm
+  wget http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/rapache-1.2.7-2.1.src.rpm && \ 
+  wget http://download.opensuse.org/repositories/home:/jeroenooms:/opencpu-1.6/Fedora_23/src/opencpu-1.6.2-7.1.src.rpm && \ 
+  dnf builddep -y rapache-1.2.7-2.1.src.rpm && \
+  dnf builddep -y opencpu-1.6.2-7.1.src.rpm
 
 
 RUN \
   useradd -ms /bin/bash builder && \
-  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel
+#  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel
 
 USER builder
 
