@@ -45,8 +45,7 @@ RUN \
 
 RUN \
   wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-rhel-1.0.44-x86_64.rpm && \
-  dnf install -y --nogpgcheck rstudio-server-rhel-1.0.44-x86_64.rpm && \
-  rm 
+  dnf install -y --nogpgcheck rstudio-server-rhel-1.0.44-x86_64.rpm 
 
 # Cleanup
 RUN \
