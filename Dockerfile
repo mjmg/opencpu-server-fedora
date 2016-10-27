@@ -46,8 +46,16 @@ RUN \
 RUN \
   wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-rhel-1.0.44-x86_64.rpm && \
   dnf install -y --nogpgcheck rstudio-server-rhel-1.0.44-x86_64.rpm && \
-  rm rstudio-server-rhel-1.0.44-x86_64.rpm
+  rm 
 
+# Cleanup
+RUN \
+  rm -f /home/builder/rapache-1.2.7-2.1.src.rpm && \
+  rm -f /home/builder/opencpu-1.6.2-7.1.src.rpm && \
+  rm -f /home/builder/rstudio-server-rhel-1.0.44-x86_64.rpm && \
+  rm -rf /home/builder/rpmbuild/* && \
+  dnf autoremove -y
+  
 # Apache ports
 EXPOSE 80
 EXPOSE 443
